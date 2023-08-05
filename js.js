@@ -37,13 +37,52 @@ window.onload = () => {
         ) {
             gameStats.playerScore++;
             console.log(`HUMANO: ${gameStats.playerScore}`);
-            messageElement.textContent = "Let's Go";
+            humanSupportMessage();
         } else {
             gameStats.computerScore++;
             console.log(`COMPUTADORA: ${gameStats.computerScore}`);
-            messageElement.textContent = "Oh no, they are coming";
+            computerSupportMessage();
         }
         updateScore();
+    }
+
+    const humanSupportMessage = () => {
+        switch(gameStats.playerScore){
+            case 1:
+                messageElement.textContent = "Let's Go";
+                break;
+            case 2:
+                messageElement.textContent = "Come one";
+                break;
+            case 3:
+                messageElement.textContent = "Two more";
+                break;    
+            case 4:
+                messageElement.textContent = "You are going to save us";
+                break;    
+        }
+    }
+
+    const computerSupportMessage = () => {
+        switch(gameStats.computerScore){
+            case 1:
+                messageElement.textContent = "Ok, nothing to worry about";
+                break;
+            case 2:
+                messageElement.textContent = "Fuck";
+                break;
+            case 3:
+                messageElement.textContent = "We are loosing...";
+                break;    
+            case 4:
+                messageElement.textContent = "You still have chance";
+                break;    
+        }
+        // if(gameStats.playerScore === 1) {
+        // } else if (gameStats.playerScore > 1 && gameStats.playerScore < 4){
+        // } else {
+        //     messageElement.textContent = "You are going to save us"
+        // }
     }
 
     const updateScore = () => {

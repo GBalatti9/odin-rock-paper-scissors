@@ -46,7 +46,7 @@ window.onload = () => {
         updateScore();
     }
 
-    
+
     const humanSupportMessage = () => {
         switch(gameStats.playerScore){
             case 1:
@@ -73,7 +73,7 @@ window.onload = () => {
                 messageElement.textContent = "Fuck";
                 break;
             case 3:
-                messageElement.textContent = "We are loosing...";
+                messageElement.textContent = "We are going to lose...";
                 break;    
             case 4:
                 messageElement.textContent = "You still have chance";

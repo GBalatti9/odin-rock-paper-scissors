@@ -12,6 +12,7 @@ body{
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+    background-color: #ebebeb;
 }
 
 .title-web{
@@ -33,11 +34,11 @@ body{
 }
 
 .scores{
+    position: relative;
     width: 50%;
     margin: 20px 0px;
     display: flex;
     justify-content: space-around;
-    position: relative;
 }
 
 .scores .score{
@@ -57,9 +58,10 @@ body{
 
 .buttons button{
     border: none;
+    border-radius: 5px;
     font-size: 120px;
     outline: none;
-    background-color: white;
+    background-color: #ebebeb;
     transition: all 0.5s ease;
     cursor: pointer;
 }
@@ -112,10 +114,7 @@ body{
     flex-direction: column;
     font-family: Montserrat, sans-serif;
     padding: 10px;
-    position: absolute; /* Agregar posición absoluta al elemento */
-    top: 50%; /* Ajustar coordenadas verticales para centrarlo verticalmente */
-    left: 50%; /* Ajustar coordenadas horizontales para centrarlo horizontalmente */
-    transform: translate(-50%, -50%); /* Centrar el elemento en el centro del contenedor */
+    justify-content: center;
 }
 
 .tie-score h4, .tie-score p{

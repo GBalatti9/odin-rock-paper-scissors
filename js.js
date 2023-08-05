@@ -4,9 +4,6 @@ window.onload = () => {
     const messageElement = document.querySelector('.message');
     const resetButton = document.getElementById('resetButton');
     resetButton.classList.add('display');
-    // resetButton.addEventListener('click', () => {
-    //     resetButton.classList.add('display');
-    // })
 
     // LOGICA
     let gameStats = {

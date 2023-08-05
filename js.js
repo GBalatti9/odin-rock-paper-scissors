@@ -3,6 +3,10 @@ window.onload = () => {
     const buttons = Array.from(document.querySelectorAll('button'));
     const messageElement = document.querySelector('.message');
     const resetButton = document.getElementById('resetButton');
+    resetButton.classList.add('display');
+    // resetButton.addEventListener('click', () => {
+    //     resetButton.classList.add('display');
+    // })
 
     // LOGICA
     let gameStats = {
@@ -27,7 +31,7 @@ window.onload = () => {
         if (playerSelection === computerSelection) {
             gameStats.tie ++;
             console.log(`EMPATE: ${gameStats.tie}`);
-            gameStats.tie === 1 ? messageElement.textContent = `Tie` : messageElement.textContent = `Tie ${gameStats.tie}`;
+            messageElement.textContent = `Tie`
 
         } else if (
             (playerSelection === 'Rock' && computerSelection === "Scissors") ||
@@ -48,7 +52,7 @@ window.onload = () => {
     const updateScore = () => {
         pScorePlayer.textContent = gameStats.playerScore;
         pScoreComputer.textContent = gameStats.computerScore;
-        // pScoreTie.textContent = gameStats.tie;
+        pScoreTie.textContent = gameStats.tie;
 
         showWinnerMessage();
     }
@@ -56,44 +60,42 @@ window.onload = () => {
     const showWinnerMessage = () => {
         if (gameStats.playerScore === 5 || gameStats.computerScore === 5 || gameStats.tie === 5) {
             messageElement.textContent = '';
-            const winner = document.createElement('h1');
+            const winner = document.createElement('h2');
+            
             winner.style.fontFamily = 'Montserrat'
-            if(gameStats.playerScore > gameStats.computerScore){
+            if(gameStats.playerScore > gameStats.computerScore && gameStats.playerScore > gameStats.tie){
                 winner.textContent = 'You won'
-            } else if (gameStats.computerScore > gameStats.playerScore){
+            } else if (gameStats.computerScore > gameStats.playerScore && gameStats.computerScore > gameStats.tie){
                 winner.textContent = 'The machine won'
             } else {
-                winner.textContent = 'Tie'
+                winner.textContent = "It is a tie"
             }
 
             buttons.forEach(button => {
                 button.style.display = 'none';
             });
-            body.appendChild(winner)
+            body.insertBefore(winner, resetButton);
 
-
-            resetButton.style.display = 'block';
+            resetButton.classList.remove('display');
+            resetButton.addEventListener('click', (e) => {
+                console.log(e);
+                pScorePlayer.textContent = '0';
+                gameStats.playerScore = 0;
+                pScoreComputer.textContent = '0';
+                gameStats.computerScore = 0;
+                pScoreTie.textContent = '0';
+                gameStats.tie = 0;
+                resetButton.classList.add('display');
+                winner.classList.add('display')
+                messageElement.textContent = '';
+                // winner.textContent = '';
+                buttons.forEach(button => {
+                    button.style.display = 'block';
+                });
+            }); 
         }
     }
 
-    resetButton.addEventListener('click', (e) => {
-        console.log(e);
-        pScorePlayer.textContent = '0';
-        gameStats.playerScore = 0;
-        pScoreComputer.textContent = '0';
-        gameStats.computerScore = 0;
-        gameStats.tie = 0;
-        resetButton.style.display = 'none';
-        const winner = document.querySelector('h1');
-        if (winner) {
-            winner.remove();
-        }
-        messageElement.textContent = '';
-        // winner.textContent = '';
-        buttons.forEach(button => {
-            button.style.display = 'block';
-        });
-    }); 
 
     
     buttons.forEach(button => {
@@ -105,67 +107,15 @@ window.onload = () => {
 
     // ESTILOS
     const body = document.querySelector('body');
-    const titleWeb = document.querySelector('#title-web');
-    const subtitle = document.querySelector('#subtitle');
-    const divBtns = document.querySelector('.buttons');
-
-    // const div = document.createElement('div');
-    // div.style.height = '100px';
-    // body.insertBefore(div, divBtns);
-
-    // const divScores = document.createElement('section');
-    // divScores.style.display = 'flex';
-    // divScores.style.justifyContent = 'space-around';
-    // divScores.style.height = '100%'
-    // div.appendChild(divScores)
-    
-    // const divPlayer = document.createElement('div');
-    // divPlayer.textContent = 'Human';
-
-    // const divComputer = document.createElement('div');
-    // divComputer.textContent = 'Machine';
-
-    // const divTie = document.createElement('div');
-    // divTie.textContent = 'Tie';
-
-    // divScores.appendChild(divPlayer);
-    // divScores.appendChild(divComputer);
-    // divScores.appendChild(divTie);
 
     const pScorePlayer = document.getElementById('pHuman');
     const pScoreComputer = document.getElementById('pMachine');
-    // const pScoreTie = document.createElement('p');
+    const pScoreTie = document.getElementById('tie')
 
     pScorePlayer.textContent = gameStats.playerScore;
     pScorePlayer.style.textAlign = 'center';
     pScoreComputer.textContent = gameStats.computerScore;
     pScoreComputer.style.textAlign = 'center';
-    // pScoreTie.textContent = gameStats.tie;
-    // pScoreTie.style.textAlign = 'center';
+    pScoreTie.textContent = gameStats.tie;
 
-    // divPlayer.appendChild(pScorePlayer);
-    // divComputer.appendChild(pScoreComputer);
-    // divTie.appendChild(pScoreTie);
 }
-
-
-    // const game = () => {
-    //     let rounds = [];
-    //     for (let i = 1; i <= 5; i++) {
-    //         const playerSelection = prompt(`Round ${i}: Rock, Paper, Scissors`);
-    //         rounds.push(`${i}:`, playAround(playerSelection, getComputerChoice()));
-    //     }
-    // return rounds.forEach(round => {
-    //     console.log(round);
-    // });
-    // }
-
-    // game();
-
-    // const results = {
-    //     "Player Wins": playerWins,
-    //     "Computer Wins": computerWins,
-    //     "Ties": tie
-    // }
-
-    // console.table(results);

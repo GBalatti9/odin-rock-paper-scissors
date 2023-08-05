@@ -12,7 +12,6 @@ body{
     justify-content: center;
     flex-direction: column;
     height: 100vh;
-    border: 1px solid red;
 }
 
 .title-web{
@@ -38,6 +37,7 @@ body{
     margin: 20px 0px;
     display: flex;
     justify-content: space-around;
+    position: relative;
 }
 
 .scores .score{
@@ -79,3 +79,47 @@ body{
     font-family: Montserrat, sans-serif;
     font-size: 20px;
 }
+
+.display{
+    display: none;
+}
+
+#resetButton{
+    font-size: 20px;
+    padding: 1%;
+    border: none;
+    border-radius: 5px;
+    animation: colorChange 0.5s infinite ease;
+    cursor: pointer;
+}
+
+@keyframes colorChange {
+    0% {
+        box-shadow: 0 0 0 0;
+    }
+
+    50% {
+        box-shadow: 1px 2px 5px gray;
+    }
+
+    100% {
+        /* border: 1px solid black; */
+    }
+}
+
+.tie-score{
+    display: flex;
+    flex-direction: column;
+    font-family: Montserrat, sans-serif;
+    padding: 10px;
+    position: absolute; /* Agregar posición absoluta al elemento */
+    top: 50%; /* Ajustar coordenadas verticales para centrarlo verticalmente */
+    left: 50%; /* Ajustar coordenadas horizontales para centrarlo horizontalmente */
+    transform: translate(-50%, -50%); /* Centrar el elemento en el centro del contenedor */
+}
+
+.tie-score h4, .tie-score p{
+    text-align: center;
+    font-size: 25px;
+}
+

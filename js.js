@@ -46,6 +46,7 @@ window.onload = () => {
         updateScore();
     }
 
+    
     const humanSupportMessage = () => {
         switch(gameStats.playerScore){
             case 1:
